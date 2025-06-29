@@ -66,7 +66,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini secara lokal.
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=nama_database_anda
+    DB_DATABASE=WarnetApp
     DB_USERNAME=root
     DB_PASSWORD=
     ```
