@@ -32,7 +32,7 @@ Aplikasi ini dirancang dengan sistem multi-peran (multi-role) untuk memisahkan t
 - **Backend:** Laravel 12
 - **Frontend:** Blade, Tailwind CSS, Vite.js
 - **Database:** MySQL (dapat disesuaikan)
-- **Bahasa:** PHP 8.2+
+- **Bahasa:** PHP 8.4+
 
 ## Instalasi & Konfigurasi
 
