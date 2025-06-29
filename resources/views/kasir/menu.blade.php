@@ -46,9 +46,11 @@
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Kategori</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Harga</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Stok</th>
+                                @if(Auth::user()->role == 'admin')
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                     <span class="sr-only">Aksi</span>
                                 </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-800 bg-slate-800/50">
