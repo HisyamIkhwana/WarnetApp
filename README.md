@@ -40,8 +40,8 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini secara lokal.
 
 1.  **Clone Repositori**
     ```bash
-    git clone [URL_REPOSITORI_ANDA]
-    cd [NAMA_FOLDER_PROYEK]
+    git clone https://github.com/HisyamIkhwana/WarnetApp.git
+    cd WarnetApp
     ```
 
 2.  **Install Dependensi PHP**
