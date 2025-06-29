@@ -41,9 +41,7 @@
                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Komputer</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Jadwal Sesi</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Status</th>
-                                @if(Auth::user()->role == 'admin')
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-center text-white">Aksi</th>
-                                @endif
+                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-center text-white">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-800 bg-gray-900/50">
@@ -66,7 +64,6 @@
                                         <span class="inline-flex items-center rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-400/20 animate-pulse">Aktif</span>
                                     @endif
                                 </td>
-                                @if(Auth::user()->role == 'admin')
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-center text-sm font-medium sm:pr-6">
                                     <button onclick="openEditModal({{ $sesi->toJson() }}, {{ $komputers->toJson() }})" class="text-indigo-400 hover:text-indigo-300">Edit</button>
                                     <form action="{{ route('sesi.destroy', $sesi->id) }}" method="POST" class="inline-block ml-4" onsubmit="return confirm('Yakin ingin menghapus sesi ini?')">
@@ -75,11 +72,10 @@
                                         <button type="submit" class="text-red-400 hover:text-red-300">Hapus</button>
                                     </form>
                                 </td>
-                                @endif
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="{{ Auth::user()->role == 'admin' ? '4' : '3' }}" class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-400">Belum ada data sesi.</td>
+                                <td colspan="4" class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-400">Belum ada data sesi.</td>
                             </tr>
                             @endforelse
                         </tbody>

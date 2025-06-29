@@ -21,6 +21,12 @@ class Sesi extends Model
         'durasi',
     ];
 
+    // Cast waktu_mulai and waktu_selesai to datetime
+    protected $casts = [
+        'waktu_mulai' => 'datetime',
+        'waktu_selesai' => 'datetime',
+    ];
+
     // Relasi dengan tabel komputer (one-to-one)
     public function komputer()
     {

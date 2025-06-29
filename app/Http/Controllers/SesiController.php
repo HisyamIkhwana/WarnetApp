@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sesi;
 use App\Models\Komputer;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SesiController extends Controller
 {
@@ -18,14 +19,22 @@ class SesiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'komputer_id' => 'required|exists:komputers,id|unique:sesis,komputer_id,NULL,id,waktu_selesai,>,'.now(),
+            'komputer_id' => [
+                'required',
+                'exists:komputers,id',
+                Rule::unique('sesis')->where(function ($query) {
+                    return $query->where('waktu_selesai', '>', now());
+                })
+            ],
             'durasi' => 'required|integer|min:1',
+            'redirect_to' => 'nullable|string' // Validasi untuk redirect
         ], [
             'komputer_id.unique' => 'Komputer ini sudah memiliki sesi yang aktif.'
         ]);
 
         $waktu_mulai = now();
-        $waktu_selesai = now()->addHours($validated['durasi']);
+        // Cast durasi to integer to prevent type error
+        $waktu_selesai = now()->addHours((int)$validated['durasi']);
 
         Sesi::create([
             'komputer_id' => $validated['komputer_id'],
@@ -40,7 +49,9 @@ class SesiController extends Controller
             $komputer->save();
         }
 
-        return redirect()->route('sesi.index')->with('success', 'Sesi baru berhasil dimulai!');
+        // Redirect dinamis
+        $redirectRoute = $validated['redirect_to'] ?? 'sesi.index';
+        return redirect()->route($redirectRoute)->with('success', 'Sesi baru berhasil dimulai!');
     }
 
     /**
@@ -53,8 +64,8 @@ class SesiController extends Controller
             'durasi' => 'required|integer|min:1',
         ]);
         
-        // Hitung ulang waktu selesai berdasarkan waktu mulai yang sudah ada
-        $waktu_selesai = \Carbon\Carbon::parse($sesi->waktu_mulai)->addHours($validated['durasi']);
+        // Cast durasi to integer and recalculate end time
+        $waktu_selesai = \Carbon\Carbon::parse($sesi->waktu_mulai)->addHours((int)$validated['durasi']);
 
         $sesi->update([
             'komputer_id' => $validated['komputer_id'],

@@ -9,6 +9,8 @@ use App\Models\Produk;
 use App\Models\Komputer;
 use App\Models\Sesi;
 use App\Models\Transaksi;
+use App\Models\ItemPesanan;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -44,6 +46,22 @@ class DashboardController extends Controller
             $komputers = Komputer::with('sesiAktif')->get();
             $transaksiTerakhir = Transaksi::with('pesanan.items.produk')->latest()->take(5)->get();
 
+	        // Data baru: Sesi yang sedang berjalan
+	        $sesiBerjalan = Sesi::where('waktu_selesai', '>', Carbon::now())
+	                              ->with('komputer')
+	                              ->latest('waktu_mulai')
+	                              ->get();
+	
+	        // Data baru: Produk terlaris hari ini
+	        $produkTerlaris = ItemPesanan::whereDate('item_pesanans.created_at', Carbon::today())
+	            ->join('produks', 'item_pesanans.produk_id', '=', 'produks.id')
+	            ->select('produks.nama', DB::raw('SUM(item_pesanans.jumlah) as total_terjual'))
+	            ->groupBy('produks.nama')
+	            ->orderByDesc('total_terjual')
+	            ->take(5)
+	            ->get();
+
+
             // Mengirim semua data ke view
             return view('admin.dashboard', compact(
                 'totalKomputer',
@@ -54,7 +72,9 @@ class DashboardController extends Controller
                 'pendapatanWarnetHariIni',
                 'pendapatanWarungHariIni',
                 'komputers',
-                'transaksiTerakhir'
+                'transaksiTerakhir',
+                'sesiBerjalan',
+                'produkTerlaris'
             ));
             return view('admin.dashboard'); 
 

@@ -110,10 +110,10 @@
                             <p class="text-xs text-gray-400">Rp 5,000/jam</p>
                         </div>
                         @if ($komputer->status == 'tersedia')
-                            <a href="{{ route('sesi.create', ['komputer_id' => $komputer->id]) }}" class="w-full inline-block bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-center transition-colors">
+                            <button onclick="openWarnetSesiModal({{ $komputer->id }}, '{{ $komputer->merk }}')" class="w-full inline-block bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-center transition-colors">
                                 <i class="fas fa-play mr-2"></i>
                                 Mulai Sesi
-                            </a>
+                            </button>
                         @else
                             <button disabled class="w-full bg-gray-600 text-white py-2 rounded-lg cursor-not-allowed">
                                 Tidak Tersedia
@@ -169,6 +169,38 @@
             </div>
         </div>
     </div>
+
+{{-- Modal Khusus untuk Dashboard Warnet --}}
+<div id="warnetSesiModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/75">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="relative w-full max-w-lg p-8 mx-auto bg-slate-800 rounded-lg shadow-xl">
+            <button type="button" onclick="closeWarnetSesiModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-200"><span class="sr-only">Tutup</span><i class="fas fa-times"></i></button>
+            <h2 class="text-xl font-bold text-white mb-2">Mulai Sesi Baru</h2>
+            <p class="text-sm text-slate-400 mb-6">Untuk Komputer: <span id="warnet-nama-komputer-modal" class="font-bold text-indigo-400"></span></p>
+            <form id="warnetSesiForm" action="{{ route('sesi.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="komputer_id" id="warnet-komputer-id-input">
+                <input type="hidden" name="redirect_to" value="warnet.index">
+                <div class="space-y-4 text-left">
+                    <div>
+                        <label for="durasi" class="block text-sm font-medium leading-6 text-gray-300">Durasi (dalam jam)</label>
+                        <div class="mt-2">
+                            <input type="number" name="durasi" min="1" required class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6" placeholder="Contoh: 1 atau 2">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 flex items-center justify-end gap-x-4">
+                    <button type="button" onclick="closeWarnetSesiModal()" class="text-sm font-semibold leading-6 text-gray-300">Batal</button>
+                    <button type="submit" class="rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Mulai Sesi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@push('scripts')
     <script>
         function updateCurrentTime() {
             const now = new Date();
@@ -187,5 +219,21 @@
                 refreshButton.addEventListener('click', updateCurrentTime);
             }
         });
+
+        // Modal Scripts for Warnet Dashboard
+        function openWarnetSesiModal(komputerId, komputerMerk) {
+            document.getElementById('warnet-komputer-id-input').value = komputerId;
+            document.getElementById('warnet-nama-komputer-modal').textContent = komputerMerk;
+            document.getElementById('warnetSesiModal').classList.remove('hidden');
+        }
+
+        function closeWarnetSesiModal() {
+            document.getElementById('warnetSesiModal').classList.add('hidden');
+        }
+
+        // If there are validation errors on submit, reopen the modal
+        @if($errors->any() && old('komputer_id'))
+            openWarnetSesiModal('{{ old("komputer_id") }}', '{{ App\Models\Komputer::find(old("komputer_id"))->merk ?? "" }}');
+        @endif
     </script>
-@endsection
+@endpush
