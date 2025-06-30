@@ -1,8 +1,5 @@
 <div class="space-y-4 text-left">
-    {{-- Karena warnet hanya ada satu, kita bisa sembunyikan input ini --}}
-    {{-- Jika Anda berencana memiliki banyak warnet, Anda bisa menampilkannya lagi --}}
     <input type="hidden" name="warnet_id" value="1">
-
     <div>
         <label for="merk" class="block text-sm font-medium leading-6 text-gray-300">Merk Komputer</label>
         <div class="mt-2">
