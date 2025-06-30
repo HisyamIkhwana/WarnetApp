@@ -7,9 +7,6 @@ use App\Models\Komputer;
 
 class KomputerSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $komputerData = [
