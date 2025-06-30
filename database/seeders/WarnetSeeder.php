@@ -7,9 +7,6 @@ use App\Models\Warnet;
 
 class WarnetSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Warnet::create([
