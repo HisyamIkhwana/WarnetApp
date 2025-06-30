@@ -2,7 +2,6 @@
 @section('title', 'Kasir')
 
 @section('content')
-{{-- Kontainer utama diubah menjadi 2 kolom (rasio 2:1) --}}
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
 
     <div class="lg:col-span-2">
@@ -78,7 +77,6 @@
 @endsection
 
 @push('scripts')
-{{-- Tidak ada perubahan pada JavaScript, kode di bawah ini sama seperti sebelumnya --}}
 <script>
     const allMenuItems = @json($produks);
     let currentOrder = {
@@ -224,7 +222,6 @@
 
     document.getElementById('searchInput').addEventListener('input', (e) => renderMenu(e.target.value));
     
-    // Initial Render
     renderMenu();
     renderOrder();
 </script>
