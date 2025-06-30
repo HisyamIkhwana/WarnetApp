@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pelanggan')->nullable();
             $table->string('no_meja')->nullable();
-            $table->string('status')->default('selesai'); // cth: pending, diproses, selesai, online
+            $table->string('status')->default('selesai'); 
             $table->unsignedInteger('total_harga');
             $table->timestamps();
         });
