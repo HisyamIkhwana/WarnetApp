@@ -8,24 +8,17 @@ use Carbon\Carbon;
 
 class ProdukSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Menonaktifkan pengecekan foreign key
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        // Mengosongkan tabel. Sekarang perintah ini akan berhasil.
         DB::table('produks')->truncate();
-        
-        // Kita juga bisa mengosongkan tabel lain yang berhubungan jika diperlukan
+
         DB::table('item_pesanans')->truncate();
         DB::table('pesanans')->truncate();
         DB::table('transaksis')->truncate();
 
         DB::table('produks')->insert([
-            // === MAKANAN ===
             [
                 'nama' => 'Indomie Goreng Telor',
                 'deskripsi' => 'Indomie goreng jumbo dengan telur mata sapi.',
@@ -142,7 +135,6 @@ class ProdukSeeder extends Seeder
             ],
         ]);
 
-        // Mengaktifkan kembali pengecekan foreign key
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
