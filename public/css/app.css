@@ -1,7 +1,4 @@
-/* app.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-
-/* === GAYA ASLI ANDA === */
 * {
     font-family: 'Inter', sans-serif;
 }
@@ -43,16 +40,13 @@ body {
     50% { opacity: 0.5; }
 }
 
-/* === GAYA BARU UNTUK KASIR (DARK MODE) === */
 .pos-container {
     display: grid;
     grid-template-columns: 1fr 420px;
-    /* Tinggi diatur agar sesuai dengan padding di layout utama */
     height: calc(100vh - 10rem); 
     gap: 2rem;
 }
 
-/* Panel Kiri - Daftar Menu */
 .menu-panel {
     background: transparent;
     overflow-y: auto;
@@ -97,11 +91,11 @@ body {
 
 .category-tabs {
     display: flex;
-    background: #1f2937; /* slate-800 */
-    border-bottom: 1px solid #4b5563; /* slate-600 */
+    background: #1f2937; 
+    border-bottom: 1px solid #4b5563; 
     padding: 0 20px;
     position: sticky;
-    top: 150px; /* Sesuaikan dengan tinggi header */
+    top: 150px; 
     z-index: 99;
     border-radius: 8px;
     margin-top: 1.5rem;
@@ -111,14 +105,14 @@ body {
     padding: 15px 20px;
     background: none; border: none; cursor: pointer;
     font-size: 14px; font-weight: 600;
-    color: #9ca3af; /* gray-400 */
+    color: #9ca3af;
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
 }
 
 .category-tab.active, .category-tab:hover {
     color: white;
-    border-bottom-color: #667eea; /* purple-500 */
+    border-bottom-color: #667eea;
 }
 
 .menu-grid {
@@ -129,10 +123,10 @@ body {
 }
 
 .menu-item {
-    background: #374151; /* slate-700 */
+    background: #374151;
     border-radius: 12px;
     padding: 20px;
-    border: 1px solid #4b5563; /* slate-600 */
+    border: 1px solid #4b5563;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -143,33 +137,32 @@ body {
 .menu-item.disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(80%); }
 .menu-item-image {
     width: 100%; height: 120px;
-    background: #4b5563; /* slate-600 */
+    background: #4b5563
     border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    margin-bottom: 15px; font-size: 50px; color: #9ca3af; /* gray-400 */
+    margin-bottom: 15px; font-size: 50px; color: #9ca3af;
 }
 
 .menu-item-name { font-size: 18px; font-weight: bold; color: white; margin-bottom: 8px; }
-.menu-item-description { font-size: 14px; color: #d1d5db; /* gray-300 */ margin-bottom: 12px; line-height: 1.4; height: 40px; overflow: hidden; }
+.menu-item-description { font-size: 14px; color: #d1d5db;margin-bottom: 12px; line-height: 1.4; height: 40px; overflow: hidden; }
 .menu-item-footer { display: flex; justify-content: space-between; align-items: center; }
-.menu-item-price { font-size: 20px; font-weight: bold; color: #818cf8; /* indigo-400 */ }
+.menu-item-price { font-size: 20px; font-weight: bold; color: #818cf8; }
 .stock-badge { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
 .stock-badge.ok { background: #10b981; color: white; }
 .stock-badge.low { background: #f59e0b; color: white; }
 .stock-badge.out { background: #ef4444; color: white; }
 
-/* Panel Kanan - Pesanan */
 .order-panel {
-    background: #1f2937; /* slate-800 */
+    background: #1f2937; 
     display: flex; flex-direction: column;
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
 }
 
 .order-header {
-    background: #111827; /* slate-900 */
+    background: #111827;
     color: white; padding: 20px; text-align: center;
     border-top-left-radius: 12px; border-top-right-radius: 12px;
-    border-bottom: 1px solid #4b5563; /* slate-600 */
+    border-bottom: 1px solid #4b5563; 
 }
 
 .order-title { font-size: 20px; font-weight: bold; margin-bottom: 5px; }
@@ -178,8 +171,8 @@ body {
 .customer-info { padding: 20px; border-bottom: 1px solid #4b5563; }
 .customer-input {
     width: 100%; padding: 12px;
-    border: 2px solid #4b5563; /* slate-600 */
-    background: #374151; /* slate-700 */
+    border: 2px solid #4b5563; 
+    background: #374151; 
     border-radius: 8px; font-size: 14px; margin-bottom: 10px;
     color: white;
     transition: border-color 0.3s ease;
@@ -199,19 +192,19 @@ body {
 .quantity-controls { display: flex; align-items: center; gap: 10px; }
 .quantity-btn {
     width: 30px; height: 30px; border: none; border-radius: 50%;
-    background: #4f46e5; /* indigo-600 */
+    background: #4f46e5; 
     color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
     transition: background 0.3s ease;
 }
-.quantity-btn:hover { background: #6366f1; /* indigo-500 */ }
+.quantity-btn:hover { background: #6366f1; }
 .quantity-display { font-weight: bold; min-width: 20px; text-align: center; color: white; }
 .remove-item {
-    background: #ef4444; /* red-500 */ border: none; color: white;
+    background: #ef4444; border: none; color: white;
     width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.3s ease;
 }
-.remove-item:hover { background: #f87171; /* red-400 */ }
+.remove-item:hover { background: #f87171; }
 
 .order-summary { background: #111827; padding: 20px; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
 .summary-line { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #d1d5db; }
@@ -240,11 +233,9 @@ body {
 .empty-order { text-align: center; color: #6b7280; padding: 60px 20px; }
 
 select > option {
-    background: #374151; /* Warna ini setara dengan bg-slate-700 di Tailwind */
+    background: #374151;
     color: #ffffff;
   }
-  
-  /* Optional: Memberi style saat dropdown di-hover */
   select > option:hover {
-      background-color: #4f46e5; /* Warna ini setara dengan bg-indigo-600 */
+      background-color: #4f46e5;
   }
