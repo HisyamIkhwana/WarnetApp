@@ -13,8 +13,8 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi')->nullable();
             $table->unsignedInteger('harga');
-            $table->string('kategori'); // cth: 'makanan', 'minuman', 'snack'
-            $table->string('icon')->nullable(); // Emoji atau nama ikon Font Awesome
+            $table->string('kategori'); 
+            $table->string('icon')->nullable(); 
             $table->unsignedInteger('stok');
             $table->timestamps();
         });
