@@ -54,7 +54,6 @@
                         </tbody>
                     </table>
                 </div>
-                {{-- Link Paginasi --}}
                 <div class="mt-4">
                     {{ $transaksis->links() }}
                 </div>
