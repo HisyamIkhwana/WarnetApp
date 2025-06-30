@@ -1,4 +1,4 @@
-@extends('layouts.admin') {{-- Menggunakan layout admin warnet utama --}}
+@extends('layouts.admin')
 @section('title', 'Admin Dashboard')
 
 @section('content')
