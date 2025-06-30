@@ -11,7 +11,6 @@
     </div>
 </div>
 
-{{-- === MODAL EDIT KOMPUTER === --}}
 <div id="editModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/75">
     <div class="flex items-center justify-center min-h-screen px-4">
         <div class="relative w-full max-w-lg p-8 mx-auto bg-slate-800 rounded-lg shadow-xl text-center">
