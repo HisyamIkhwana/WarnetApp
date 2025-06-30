@@ -30,7 +30,6 @@
         </div>
     @endif
 
-    {{-- Tabel Sesi dengan Desain Baru --}}
     <div class="flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -85,13 +84,11 @@
         </div>
     </div>
 
-    {{-- Modal Tambah & Edit (tidak berubah) --}}
     @include('sesi.modals')
 </div>
 @endsection
 
 @push('scripts')
-    {{-- JavaScript (tidak berubah) --}}
     <script>
         function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
