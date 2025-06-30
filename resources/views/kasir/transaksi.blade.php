@@ -8,7 +8,6 @@
             <h1 class="text-2xl font-bold leading-6 text-white">Riwayat Transaksi</h1>
             <p class="mt-2 text-sm text-gray-400">Daftar semua transaksi penjualan yang telah selesai.</p>
         </div>
-        {{-- Di sini bisa ditambahkan tombol filter atau export jika diperlukan --}}
     </div>
 
     <div class="mt-8 flow-root">
