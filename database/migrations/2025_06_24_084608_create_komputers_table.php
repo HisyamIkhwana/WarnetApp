@@ -6,26 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('komputers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('warnet_id'); // Relasi ke Warnet
+            $table->unsignedBigInteger('warnet_id'); 
             $table->string('merk');
             $table->string('spesifikasi');
-            $table->boolean('status')->default(true); // Status aktif/nonaktif
+            $table->boolean('status')->default(true); 
             $table->timestamps();
 
             $table->foreign('warnet_id')->references('id')->on('warnets')->onDelete('cascade');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('komputers');
