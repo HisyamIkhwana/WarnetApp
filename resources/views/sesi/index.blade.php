@@ -1,4 +1,4 @@
-@extends(Auth::user()->role == 'admin' ? 'layouts.admin' : 'layouts.app')
+@extends(Auth::user()->role == 'admin' ? 'layouts.admin' : 'layouts.warnet')
 
 @section('title', 'Manajemen Sesi')
 
