@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.warnet')
 @section('title', 'Dashboard Admin Warnet')
 @section('content')
     <div class="flex items-center justify-between mb-8">
